@@ -45,6 +45,15 @@ PT_CC=armv7a-linux-androideabi16-clang
 PT_CXX=armv7a-linux-androideabi16-clang++
 PT_TARGET=arm-linux-androideabi
 
+elif [ $arch == "x86" ] ; then
+
+PT_ARM_TOOLCHAIN=$PT_NDK_ROOT/toolchains/llvm
+TOOL_FOLDER=$PT_ARM_TOOLCHAIN/prebuilt/linux-x86_64/bin:$PT_ARM_TOOLCHAIN/prebuilt/linux-x86_64/i686-linux-android/bin
+PT_CC=i686-linux-android23-clang -m32
+PT_CXX=i686-linux-android23-clang++ -m32
+PT_TARGET=i686-linux-android
+EXT_OPTIONS="--enable-simulator=arm"
+
 else
    echo "bad arch"
    exit 1
@@ -70,5 +79,6 @@ PATH=$TOOL_FOLDER:$PATH \
 	--enable-install-strip \
 	--disable-js-shell \
 	--enable-strip  \
+	$EXT_OPTIONS \
 	--without-intl-api 
 
