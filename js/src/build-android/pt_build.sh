@@ -67,7 +67,7 @@ FLAGS+="-fvisibility=hidden"
 PATH=$TOOL_FOLDER:$PATH \
 	CC="$PT_CC"  \
 	CXX="$PT_CXX" \
-	CCFLAGS=$FLAGS \
+	CFLAGS=$FLAGS \
 	CXXFLAGS=$FLAGS \
 	DIST=./android-build \
 	JS_STANDALONE=1	\
